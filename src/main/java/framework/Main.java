@@ -3,6 +3,7 @@ package framework;
 import java.util.List;
 
 import framework.factory.ExtratorFactory;
+import framework.enums.Ecommerce;
 import framework.extractor.ExtratorMercadoLivre;
 import framework.extractor.IExtratorEcommerce;
 import framework.model.Produto;
@@ -13,10 +14,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String termoBusca = "Tenis nike";
+        String termoBusca = "Vaio Fe 16 ";
 
         
-        IExtratorEcommerce extrator = ExtratorFactory.criar("mercadolivre");
+        IExtratorEcommerce extrator = ExtratorFactory.criar(Ecommerce.MERCADO_LIVRE);
         // Injeção de Dependência
        
         // sem o factory

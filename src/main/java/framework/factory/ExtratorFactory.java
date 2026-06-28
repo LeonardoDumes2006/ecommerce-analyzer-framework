@@ -2,14 +2,15 @@ package framework.factory;
 
 import framework.extractor.ExtratorMercadoLivre;
 import framework.extractor.IExtratorEcommerce;
+import framework.enums.Ecommerce;
 
 public class ExtratorFactory {
 
-    public static IExtratorEcommerce criar(String ecommerce) {
+    public static IExtratorEcommerce criar(Ecommerce ecommerce) {
 
-        switch (ecommerce.toLowerCase()) {
+        switch (ecommerce) {
 
-            case "mercadolivre":
+            case MERCADO_LIVRE:
                 return new ExtratorMercadoLivre();
 
             default:
