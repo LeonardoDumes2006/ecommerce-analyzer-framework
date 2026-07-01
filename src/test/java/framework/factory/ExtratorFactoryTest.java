@@ -18,7 +18,6 @@ class ExtratorFactoryTest {
 	        assertTrue(extrator instanceof ExtratorMercadoLivre, "A factory deve retornar uma instância de ExtratorMercadoLivre");
 	    }
 	 
-	 // este teste tem como finalidade dar erro
 	 @Test
 	    public void deveLancarExcecaoParaAmazon() {
 	        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
