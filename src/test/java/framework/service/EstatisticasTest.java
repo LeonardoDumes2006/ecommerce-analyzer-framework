@@ -61,4 +61,29 @@ class EstatisticasTest {
         assertTrue(vendedores.contains("Loja A"));
         assertTrue(vendedores.contains("Loja B"));
     }
+    
+    @Test
+    public void deveFiltrarProdutosExcelentesCorretamente() {
+        List<Produto> excelentes = estatisticas.getProdutosExcelentes(4.5);
+        
+        assertEquals(2, excelentes.size());
+    }
+
+    @Test
+    public void deveLancarExcecaoSeNotaMinimaForMaiorQue5() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            estatisticas.getProdutosExcelentes(6.0);
+        });
+
+        assertTrue(exception.getMessage().contains("estar entre 0 e 5"));
+    }
+
+    @Test
+    public void deveLancarExcecaoSeNotaMinimaForMenorQue0() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            estatisticas.getProdutosExcelentes(-1.0); 
+        });
+
+        assertTrue(exception.getMessage().contains("estar entre 0 e 5"));
+    }
 }
