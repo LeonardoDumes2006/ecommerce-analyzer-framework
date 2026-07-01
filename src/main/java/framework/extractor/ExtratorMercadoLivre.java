@@ -13,11 +13,22 @@ import com.microsoft.playwright.Playwright;
 import framework.model.Produto;
 
 /**
- * Implementação real usando Playwright para abrir um navegador invisível
- * e extrair os dados, burlando a proteção do Mercado Livre.
+ * Robô de extração feito especificamente para o Mercado Livre.
+ * Ele usa a ferramenta Playwright para abrir um navegador de verdade,
+ * imitando um humano.
+ * 
+ * @author Leonardo Dumes de Souza ( leonardodumesdesouza2006@gmail.com ) 
  */
 public class ExtratorMercadoLivre implements IExtratorEcommerce {
 
+	/**
+     * Abre o navegador, acessa a página do Mercado Livre e copia os dados
+     * de todos os anúncios que aparecerem na tela.
+     * 
+     * @param termoBusca O nome do produto que você quer pesquisar .
+     * @return Uma lista cheia de produtos encontrados. Se der erro ou não achar nada, devolve uma lista vazia.
+     */
+	
     @Override
     public List<Produto> buscarItens(String termoBusca) {
         List<Produto> listaProdutos = new ArrayList<>();
@@ -33,9 +44,9 @@ public class ExtratorMercadoLivre implements IExtratorEcommerce {
 
             page.navigate(url);
 
-            page.waitForSelector(".poly-card, .ui-search-layout__item");
+            page.waitForSelector(".poly-card");
 
-            Locator itens = page.locator(".poly-card, .ui-search-layout__item");
+            Locator itens = page.locator(".poly-card");
             System.out.println("-> Encontrados " + itens.count() + " itens. Lendo dados...");
 
             for (int i = 0; i < itens.count(); i++) {
@@ -70,7 +81,15 @@ public class ExtratorMercadoLivre implements IExtratorEcommerce {
 
         return listaProdutos;
     }
-
+    
+    /**
+     * Limpa o texto que o usuário digitou para conseguirmos montar um link de internet perfeito.
+     * Ele tira os acentos, letras maiúsculas e troca os espaços por traços.
+     * 
+     * @param str O texto original (ex: "Vaio Fe 16").
+     * @return O texto arrumado para virar link (ex: "vaio-fe-16").
+     */
+    
     private String formatarTermo(String str) {
         String semAcentos = Normalizer.normalize(str, Normalizer.Form.NFD)
                 .replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");

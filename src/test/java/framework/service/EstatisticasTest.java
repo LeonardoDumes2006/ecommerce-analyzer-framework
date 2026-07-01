@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import framework.model.Produto;
 
+
 class EstatisticasTest {
 
 	private List<Produto> produtos;

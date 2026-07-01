@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"framework.enums"},{"l":"framework.extractor"},{"l":"framework.factory"},{"l":"framework.model"},{"l":"framework.service"}];updateSearchResults();
