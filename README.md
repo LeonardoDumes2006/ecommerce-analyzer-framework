@@ -1,4 +1,5 @@
 **Framework Analisador de E-commerce**
+Projeto Final disciplina de Programação Orientada a Objetos II
 
 Um framework em Java construído para extrair, processar e analisar dados de produtos em marketplaces (como o Mercado Livre). O projeto foi desenvolvido com um forte foco em boas práticas de Programação Orientada a Objetos, aplicando princípios SOLID, Injeção de Dependência e o padrão de projeto Factory Method.
 
